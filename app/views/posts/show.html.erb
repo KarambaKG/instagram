@@ -1,0 +1,9 @@
+<h1>Show photographer</h1>
+
+<table class="table table-striped">
+	<tr>
+		<th><%= image_tag @post.image.url(:medium) %></th>
+		<th><%= @post.caption %></th>
+		<th><%= link_to 'back', posts_path %></th>
+	</tr>
+</table>
