@@ -1,15 +1,10 @@
 <h1>Show photographer</h1>
 
-<table class="table table-striped">
-	<tr>
-		<th><%= image_tag @post.image.url(:medium) %></th>
-		<th><%= @post.caption %></th>
-		<th><%= link_to 'back', posts_path %></th>
-		<% if @post.user.id == current_user.id %>
-		<th><%= link_to 'edit', edit_post_path %></th>
-		<th><%= link_to 'delete post', post_path(@post), method: :delete, data: {confirm: "Are you sure you want to delete this post?"} %></th>
-		<% else %>
-		<% end -%>
+<%= render 'post', post: @post %>
+<% if @post.user.id == current_user.id %>
+    <th><%= link_to 'back', posts_path %></th>
+    <th><%= link_to 'edit', edit_post_path %></th>
+<% else %>
+    <th><%= link_to 'back', posts_path %></th>
+<% end -%>
 
-	</tr>
-</table>

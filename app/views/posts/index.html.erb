@@ -1,34 +1,4 @@
 <h1>Instagram</h1>
-
-<% @posts.each do |post| %>
-
-	<div><%=link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post)%></div>
-
-	<div><%= post.user.user_name %>: <%= post.caption %></div>
-
-		<%= form_for [post, post.comments.new] do |f| %>
-			<div>
-				<%= f.text_area :content, placeholder: 'Add a comment' %>
-			</div>
-
-			<div>
-				<%= f.submit 'add comment' %>
-			</div>
-		<% end -%>
-
-		<% post.comments.each do |comment| %>
-
-			<% if comment.user %>
-				<div><%= comment.user.user_name %>: <%= comment.content %> </div>
-
-				<% if comment.user == current_user %>
-					<%= link_to "del", post_comment_path(post, comment), 
-					method: :delete, 
-					data: { confirm: "Are you sure?"} %>
-				<% end -%>
-
-			<% end %>
-	
-		<% end -%>
-
-<% end -%>
+<% @posts.each do |p| %>
+<%= render	'post', post: p	%>
+<% end %>
