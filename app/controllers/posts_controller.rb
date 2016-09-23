@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 	before_action :set_post, only: [:show, :edit, :update, :destroy]
 	before_action :owned_post, only: [:edit, :update, :destroy] 
-asdf
+asdf test4
 	def index
 		@posts = Post.all
 		@comment = Comment.new
